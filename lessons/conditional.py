@@ -12,5 +12,5 @@ else:
         else:
             print("Go report this to the authorities.")
     else:
-        print("Stop!")
+        print("Stop!!")
 print("Don't look at your phone!")
