@@ -18,7 +18,7 @@ while playing:
         guess = input("That was not " + str(len(SECRET)) + " letters! Try again: ")
     # if correct number of letters is given, player will be prompted to continue to play
     else:
-    # set up while loop to check each index for correct match
+        # set up while loop to check each index for correct match
         while index < len(SECRET):
             # if the the index of the input word matches the same index of the secret word, a green box will be attached
             if guess[index] == SECRET[index]:
