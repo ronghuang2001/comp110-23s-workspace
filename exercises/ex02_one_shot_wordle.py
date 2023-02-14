@@ -9,13 +9,13 @@ index: int = 0
 correctness: int = 0
 box: str = ""
 # guess input
-guess: str = input("What is your " + str(len(SECRET)) + "-letter guess? ")
+guess: str = input(f"What is your {len(SECRET)}-letter guess? ")
 # set up while loop for playing the game
 playing: bool = True
 while playing:
     # if incorrect number of letters is given, player will be prompted to give a guess of correct length
     if len(guess) != len(SECRET):
-        guess = input("That was not " + str(len(SECRET)) + " letters! Try again: ")
+        guess = input(f"That was not {len(SECRET)} letters! Try again: ")
     # if correct number of letters is given, player will be prompted to continue to play
     else:
         # set up while loop to check each index for correct match
