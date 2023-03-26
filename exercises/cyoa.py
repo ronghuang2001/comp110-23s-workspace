@@ -1,9 +1,10 @@
 """Choose Your Own Adventure Experience."""
 __author__ = "730400592"
+from random import randint
 SMILE: str = "\U0001F600"
 CELEBRATE: str = "\U0001F973"
-points: int = None
-player: str = ""
+points: int
+player: str
 
 
 def main() -> None:
@@ -11,11 +12,11 @@ def main() -> None:
     global points
     points = 0
     greet()
-    option: str = input("\nYou have three options.\nOption1: Guess an integer between 1 and 15.\nOption2: Guess an integer between 16 and 30.\nOption3: Stop the game and exit.\nAdventure points are set to 0 initially. If your guess mataches the secret number, you will get 20 adventure points.\nIf the (absolute) difference between your guess and secret number is 1, you will get 10 adventure points.\nIf the (absolute) difference between your guess and secret number is 2, you will get 8 adventure points.\nIf the (absolute) difference between your guess and secret number is 3, you will get 5 adventure points.\nIf the (absolute) difference between your guess and secret number is 4, you will get 3 adventure points.\nIf the (absolute) difference between your guess and secret number is greater than 4, you will get 2 adventure points.\nWhich option do you like to choose?\nType 1 if you choose Option1. Type 2 if you choose Option2. Type 3 if you choose Option3.\n")
+    option: str = input("You have three options.\nOption1: Guess an integer between 1 and 15.\nOption2: Guess an integer between 16 and 30.\nOption3: Stop the game and exit.\nAdventure points are set to 0 initially. If your guess mataches the secret number, you will get 20 adventure points.\nIf the (absolute) difference between your guess and secret number is 1, you will get 10 adventure points.\nIf the (absolute) difference between your guess and secret number is 2, you will get 8 adventure points.\nIf the (absolute) difference between your guess and secret number is 3, you will get 5 adventure points.\nIf the (absolute) difference between your guess and secret number is 4, you will get 3 adventure points.\nIf the (absolute) difference between your guess and secret number is greater than 4, you will get 2 adventure points.\nWhich option do you like to choose?\nType 1 if you choose Option1. Type 2 if you choose Option2. Type 3 if you choose Option3.\n")
     play: bool = True
-    while play:
+    while play is True:
         if option == "3":
-            print(f" The end of the game. Your total advanture points are {points}. Thank you for your participation. Goodbye!")
+            print(f"The end of the game. Your total advanture points are {points}. Thank you for your participation. Goodbye!")
             play = False
         else:
             if option == "1":
@@ -38,12 +39,12 @@ def greet() -> None:
 
 def points_calculation() -> None:
     """Advanture points calculation."""
+    global player
     guess: str = input(f"{player}, What is your guess? ")
-    from random import randint
-    secret = randint(1, 15)
+    secret: int = randint(1, 15)
     playing: bool = True
     global points
-    while playing:
+    while playing is True:
         if int(guess) != secret:
             if abs(int(guess) - secret) == 1:
                 points += 10
@@ -68,30 +69,29 @@ def points_calculation() -> None:
 
 
 def points_cal(total_points: int) -> int:
-    "Advanture points calculation."
-    guess: str = input(f"{player}, What is your guess? ")
-    from random import randint
-    secret2 = randint(16, 30)
+    """Advanture points calculation."""
+    global player
+    guess2: str = input(f"{player}, What is your guess? ")
+    secret2: int = randint(16, 30)
     playing: bool = True
     while playing:
-        if int(guess) != secret2:
-            if abs(int(guess) - secret2) == 1:
+        if int(guess2) != secret2:
+            if abs(int(guess2) - secret2) == 1:
                 total_points += 10
                 print("Your guess is 1 different from the secret number!")
-            if abs(int(guess) - secret2) == 2:
+            if abs(int(guess2) - secret2) == 2:
                 total_points += 8
                 print("Your guess is 2 different from the secret number!")
-            if abs(int(guess) - secret2) == 3:
+            if abs(int(guess2) - secret2) == 3:
                 total_points += 5
                 print("Your guess is 3 different from the secret number!")
-            if abs(int(guess) - secret2) == 4:
-                global points
+            if abs(int(guess2) - secret2) == 4:
                 total_points += 3
                 print("Your guess is 4 different from the secret number!")
-            if abs(int(guess) - secret2) > 4:
+            if abs(int(guess2) - secret2) > 4:
                 total_points += 2
                 print("Your guess is at least 5 different from the secret number!")
-            guess = input("Try again: ")
+            guess2 = input("Try again: ")
         else:
             total_points += 20
             print(f"You get it{CELEBRATE}!")
